@@ -69,14 +69,34 @@ function validar($o, $ls){
 
 
 <? function inputValue($value ,$name, $textlabel, $placeholder, $class , $type, $required){ ?>
-    <label class=" mt-3 " for="<?= $name ?>" style="font-size: 20px;"><?= $textlabel ?></label>
-    <input type="<?= $type ?>" value="<?= $value ?>" style="font-size: 20px;" class="col-12 border-0 text-white bg-transparent <?= $class ?>" id="<?= $name ?>" placeholder="<?= $placeholder ?>" name="<?= $name ?>" <?= $required ?>>
+    <label class=" mt-3 text-dark " for="<?= $name ?>" style="font-size: 20px;"><?= $textlabel ?></label>
+    <input type="<?= $type ?>" 
+    value="<?= $value ?>" 
+    style="font-size: 20px;" 
+    class="col-12 form-control border-2 border-dark  <?= $class ?>" 
+    id="<?= $name ?>" 
+    placeholder="<?= $placeholder ?>" 
+    name="<?= $name ?>" <?= $required ?>>
     <br>
 <? } ?>
 
+<? function divOpen($class){ echo '<div class="' . $class . '">'; } ?>
+<? function divClose(){ echo '</div>'; } ?>
+
+<? function btn($class, $text, $onclick, $id){  ?>
+    <button class="btn  <?= $class ?>" 
+        onclick="<?= $onclick ?>(<?= $id ?>)">
+            <?= $text ?>
+    </button>
+<? } ?>
+
 <? function input($name, $textlabel, $placeholder, $class , $type, $required){ ?>
-    <label class="col-sm-12" for="<?= $name ?>"><?= $textlabel ?></label>
-    <input type="<?= $type ?>" class="col-sm-12 border-0 text-white bg-transparent <?= $class ?>" id="<?= $name ?>" placeholder="<?= $placeholder ?>" name="<?= $name ?>" <?= $required ?>>
+    <label class="col-sm-12 text-dark" for="<?= $name ?>"><?= $textlabel ?></label>
+    <input type="<?= $type ?>" 
+    class="col-12 form-control border-2 border-dark  <?= $class ?>" 
+    id="<?= $name ?>" 
+    placeholder="<?= $placeholder ?>" 
+    name="<?= $name ?>" <?= $required ?>>
     <br>
 <? } ?>
 
@@ -86,7 +106,7 @@ function select($ls, $label, $lsatt, $default, $name, $boot, $idreferencia, $fun
 { ?>
     <label for="<? echo $name; ?>"><? echo $label; ?></label>
 
-    <select onchange="<? echo $funcao; ?>" id="<? echo $name; ?>" name="<? echo $idreferencia; ?>" class="btn text-white  col-md-12 <? echo $boot; ?>">
+    <select onchange="<? echo $funcao; ?>" id="<? echo $name; ?>" name="<? echo $idreferencia; ?>" class="btn form-control  col-md-12 btn-dark <? echo $boot; ?>">
     
     <option value="null"><? echo $default; ?></option>
     
@@ -98,6 +118,23 @@ function select($ls, $label, $lsatt, $default, $name, $boot, $idreferencia, $fun
        
     </select>
 
+<? } ?>
+
+
+<? function radioSimNao($nome, $label){ ?>
+   
+    <label class="text-dark" ><? echo $label; ?> </label>
+    <br>
+    <label  class="text-dark" for="sim">SIM</label>
+    <input name='<? echo $nome; ?>' type="radio" value="1" class="mb-3"  id="sim"/>
+    
+    <label  class="text-dark" for="nao">NÃO</label>
+    <input name='<? echo $nome; ?>' type="radio" value="0" class="mb-3"  id="nao" />
+<? } ?>
+
+<? function exibirSenhaPadrao(){ ?>
+    <br>
+    <div class="alert alert-danger text-center col-12 " >Senha padrão: MUDAR123</div>
 <? } ?>
 
 
@@ -134,10 +171,11 @@ function select($ls, $label, $lsatt, $default, $name, $boot, $idreferencia, $fun
 
   <?  } ?>
 
+<? function text($text){ echo "<span class='text-dark' > $text </span>" ; }?>
 
 <? function createTable($ls,$funcao,$namebtn, $id, $exibir, $colunas){ ?>
     <div style="scroll-behavior: auto !important; ">
-    <table class="table table-bordered " style="background-color:rgba(81, 81, 81, 0.71); color: #fff;" >
+    <table class="table table-bordered "  >
 		<thead>
 		  <tr>
                 <? foreach ($colunas as $c => $cv) {
@@ -153,7 +191,11 @@ function select($ls, $label, $lsatt, $default, $name, $boot, $idreferencia, $fun
                 foreach ($exibir as $exibirk => $exibirv) { ?>
                     <? echo "<td>" . $lsv->$exibirv . "</td>" ?>
             <? }
-            echo "<td>" . '<button class="btn btn-light" onclick="' . $funcao .'(' . $lsv->$id . ')">' . $namebtn . '</button>' . "</td>";
+            echo "<td>"; 
+                btn('btn-outline-dark',
+                    $namebtn,
+                    $funcao,
+                    $lsv->$id );
             echo '<tr>';  
             } ?>  
 		</tbody>

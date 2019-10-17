@@ -24,7 +24,7 @@ input[type=number]::-webkit-outer-spin-button {
 <?php input('pfs', 'Pesquisar fornecedor', 'Exeplo: nakata', 'cpeca', 'text', 'required'); ?>
 <br>
 
-<select name="fornecedor" id="fornecedor" class="btn text-white -block btn text-white -primary">
+<select name="fornecedor" id="fornecedor" class="btn   -block btn   -primary">
   <option value="null">Escolha um fornecedor</option>
   <option value="null">Nakata</option>
   <option value="null">BMW</option>

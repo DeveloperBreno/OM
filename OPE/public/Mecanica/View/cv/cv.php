@@ -1,3 +1,4 @@
+<? require '../../../../001Mecanica/Function.php';  ?>
 
 <? 	$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 			$p = explode("/", $actual_link);
@@ -11,20 +12,11 @@
 
 <div class="row">
 <div class="col-6">
-<label class="col-sm-12" for="placa">Placa</label>
-<input type="Nome" class="col-sm-12 placanome" id="placa" placeholder="Exeplo: ABC-1234" name="Nome">
-
-<label class="col-sm-12" for="ano">Ano</label>
-<input type="Nome" class="col-sm-12 anoveiculo" id="ano" placeholder="Exeplo: 1980" name="Nome">
-
-<label class="col-sm-12" for="VeiculoRenavam">Renavam</label>
-<input type="number" class="col-sm-12 VeiculoRenavam" id="VeiculoRenavam" placeholder="Renavam" name="VeiculoRenavam">
-
+<? input('Nome','Placa','Exeplo: ABC-1234','col-sm-12 placanome', 'text', ''  ) ?>
+<? input('ano','Ano','Exeplo: 1980','col-sm-12 anoveiculo', 'number', ''  ) ?>
+<? input('VeiculoRenavam','Renavam','Exeplo: 5436536','col-sm-12 VeiculoRenavam', 'number', ''  ) ?>
 
 <label class="col-sm-12" for="pm">Pesquisar modelo</label>
-
-
-
 
 <script>
   $( document ).ready(function() {
@@ -45,7 +37,7 @@
 <div id="cadmodelos"></div>
 
 <p style="text-align: center;"> ou </p>
-<button   onclick="fcm()" class="btn btn-light btn text-white -block collapse-item  menuItem ">
+<button   onclick="fcm()" class="btn btn-light btn   -block collapse-item  menuItem ">
 Cadastrar modelo</button>
 
 </div>
@@ -79,7 +71,7 @@ Cadastrar modelo</button>
 
 
 <p style="text-align: center;"> ou </p>
-<button   onclick="fcc()" class="btn btn-light btn text-white -block collapse-item  menuItem ">
+<button   onclick="fcc()" class="btn btn-light btn   -block collapse-item  menuItem ">
 Cadastrar Cliente</button>
 
 <br>
@@ -116,9 +108,14 @@ Cadastrar Cliente</button>
 
 
 <div class="col-12 mt-3">
-<button   href="buttons.html" class="btn btn-light cadastrarVeiculo">
-  Cadastrar veiculo
-</button>
+<br>
+
+
+<? btn('btn-outline-dark cadastrarVeiculo', 
+  'Cadastrar veiculo',
+  '',
+  ''); ?>
+
 </div>
 
 </div>

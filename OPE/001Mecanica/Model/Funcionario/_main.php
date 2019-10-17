@@ -87,6 +87,17 @@ class ServiceFuncionario{
 		return $stmt->fetchAll(PDO::FETCH_OBJ);
 	}
 
+
+
+	
+	public function listarFuncionarios(){
+		session_start();
+		$OficinaId = $_SESSION['OficinaId'];
+		$quary = "SELECT * FROM `Funcionario` WHERE OficinaId = $OficinaId ";
+		$stmt = $this->conexao->prepare($quary);
+		$stmt->execute();
+		return $stmt->fetchAll(PDO::FETCH_OBJ);
+	}
 	public function validarFuncionario(){
 		$quary = 'SELECT * FROM `Funcionario` WHERE FuncionarioCpf = ? and FuncionarioSenha =  ? and FuncionarioAtivo = 1 ';
 		$stmt = $this->conexao->prepare($quary);
@@ -140,6 +151,14 @@ function subirSESSION($ls){
 	foreach ($ls as $key => $v) {
 		$_SESSION[$key] = $v;
 	}
+}
+
+
+
+function listarFuncionarios(){
+	$serviceFuncionario = new ServiceFuncionario(new Conexao(), new Funcionario());
+	$resultado = $serviceFuncionario->listarFuncionarios();
+	return $resultado;
 }
 
  ?>

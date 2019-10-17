@@ -49,7 +49,7 @@
     color: #fff;
 }
 
-.overlay .closebtn text-white  {
+.overlay .closebtn    {
 position: absolute;
     top: -17px;
     left: : 5px;
@@ -58,7 +58,7 @@ position: absolute;
 @media screen and (max-height: 450px) {
   .overlay {overflow-y: auto;}
   /*.overlay a {font-size: 20px}*/
-  .overlay .closebtn text-white  {
+  .overlay .closebtn    {
     top: 15px;
     left: : 35px;
 
@@ -69,7 +69,7 @@ position: absolute;
 
 
 <div id="myNav" class="overlay">
-  <!-- <a href="javascript:void(0)" class="closebtn text-white " onclick="closeNav()">&times;</a> -->
+  <!-- <a href="javascript:void(0)" class="closebtn   " onclick="closeNav()">&times;</a> -->
   <div class="overlay-content">
 
     <p id="perfilusuario" >

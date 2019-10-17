@@ -1,9 +1,5 @@
 <?php 
 
-
-
-
-
 class Fornecedor{
 	private $FornecedorId;
 	private $FornecedorNome;
@@ -14,9 +10,6 @@ class Fornecedor{
 	private $FornecedorEndereco;
 	private $FornecedorNumero;
 
-	
-
-
 	public function __get($atributo) {
 		return $this->$atributo;
 	}
@@ -25,8 +18,6 @@ class Fornecedor{
 		$this->$atributo = $valor;
 	}
 } 
-
-
 
 class ServiceFornecedor{
 	private $conexao;
@@ -128,35 +119,55 @@ class ServiceFornecedor{
 		$stmt->execute();
 		return $stmt->fetchAll(PDO::FETCH_OBJ);
 	}
+
+
+	public function AtualizarFornecedor(){	
+		$quary ="UPDATE Fornecedor 
+			SET FornecedorNome = ? ,
+				FornecedorCnpj = ? ,
+				FornecedorObs = ? ,
+				FornecedorCep = ? ,
+				FornecedorEndereco = ? ,
+				FornecedorNumero = ?  
+				WHERE FornecedorId = ? ";
+		$stmt = $this->conexao->prepare($quary);
+		$stmt->bindValue(1, $this->tarefa->__get('FornecedorNome'));			
+		$stmt->bindValue(2, $this->tarefa->__get('FornecedorCnpj'));
+		$stmt->bindValue(3, $this->tarefa->__get('FornecedorObs'));
+		$stmt->bindValue(4, $this->tarefa->__get('FornecedorCep'));
+		$stmt->bindValue(5, $this->tarefa->__get('FornecedorEndereco'));
+		$stmt->bindValue(6, $this->tarefa->__get('FornecedorNumero'));
+		$stmt->bindValue(7, $this->tarefa->__get('FornecedorId'));
+		$stmt->execute();
+		
+
+		$quary ="SELECT * FROM Fornecedor 
+		WHERE FornecedorNome = ?  
+		and FornecedorId = ? ";
+		$stmt = $this->conexao->prepare($quary);
+		$stmt->bindValue(1, $this->tarefa->__get('FornecedorNome'));			
+		$stmt->bindValue(2, $this->tarefa->__get('FornecedorId'));
+		$stmt->execute();
+		$aux =  $stmt->fetchAll(PDO::FETCH_OBJ);
+		if (isset($aux[0]->FornecedorNome)){
+			return true;
+		}
+		return false;
+	}
+
+
+
+
+	public function detalheFornecedor(){
+		
+		$quary = "SELECT * FROM `Fornecedor` WHERE FornecedorId = ?  ";
+		$stmt = $this->conexao->prepare($quary);
+		$stmt->bindValue(1, $this->tarefa->__get('FornecedorId'));
+		$stmt->execute();
+		return $stmt->fetchAll(PDO::FETCH_OBJ);
+	}
+
 }
-
-/*
-
-function salvarFornecedor($lista){
-	
-	$var = json_decode($lista['obj']);
-	$Fornecedor = new Fornecedor();
-	$Fornecedor->__set('FornecedorNome',strtoupper($var[0]->value));
-	$Fornecedor->__set('FornecedorCep',strtoupper($var[2]->value));
-	$Fornecedor->__set('FornecedorCpfCnpj',strtoupper($var[1]->value));
-	$Fornecedor->__set('FornecedorAtivo','1');
-	$Fornecedor->__set('OficinaId',$_SESSION['OficinaId']);
-	//$Fornecedor->__set('FornecedorDataCadastro',strtoupper($var[0]->value));
-	$Fornecedor->__set('FornecedorNumeroCasa',strtoupper($var[4]->value));
-	$Fornecedor->__set('FornecedorObs',strtoupper($var[5]->value));
-	$Fornecedor->__set('FornecedorEndereco',strtoupper($var[3]->value));
-	$Fornecedor->__set('FornecedorBairro',strtoupper($var[0]->value));
-
-	$conexao = new Conexao();
-	$serviceFornecedor = new ServiceFornecedor($conexao, $Fornecedor);
-	$serviceFornecedor->Salvar();
-
-}
-*/
-
-
-
-
 
 function buscarFornecedor($texto){
 
@@ -168,22 +179,35 @@ function buscarFornecedor($texto){
 	return $resultado;
 }
 
-
-
-
-
 function salvarFornecedor($fornecedor){
-
-	$conexao = new Conexao();
-	$service = new ServiceFornecedor($conexao, $fornecedor);
+	$service = new ServiceFornecedor(new Conexao() , $fornecedor);
 	$resultado = $service->salvarFornecedor();
-	
-
 }
 
 function listarfornecedores(){
 	$service = new ServiceFornecedor(new Conexao(), new Fornecedor());
 	return $service->listarfornecedores();
 }
+
+
+function detalheFornecedor($id){;
+	$fornecedor = new Fornecedor();
+	$fornecedor->__set('FornecedorId',  $id );
+	$service = new ServiceFornecedor(new Conexao(),$fornecedor );
+	$ls = $service->detalheFornecedor();
+	return $ls;
+}
+
+function AtualizarFornecedor($ls){
+	$Fornecedor = sv("Fornecedor", $ls);
+	$serviceFornecedor = new ServiceFornecedor(new Conexao(), $Fornecedor);
+	$aux = $serviceFornecedor->AtualizarFornecedor();
+	if ($aux) {
+		echo '1';
+	}else{
+		echo '0';
+	}
+}
+
 
  ?>

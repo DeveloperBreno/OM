@@ -48,7 +48,7 @@ $listaDeMotoboys = listaDeMotoboys();
 					<option value="<?= $m->id_funcionario ?>" ><?= $m->nome ?></option>    
 	        	<? } ?> 
         	</select>
-        	<button   class="btn text-white  btn text-white -success" style="width: 200px;" id="motoboyLevaPedido" onclick="motoboyLevaPedido($('#<?= $v->id_pedido_finalizado ?>').val(), <?= $v->id_pedido_finalizado ?>)" >Levar</button>
+        	<button   class="btn    btn   -success" style="width: 200px;" id="motoboyLevaPedido" onclick="motoboyLevaPedido($('#<?= $v->id_pedido_finalizado ?>').val(), <?= $v->id_pedido_finalizado ?>)" >Levar</button>
       	<? }else{ echo $v->data ;} ?>
         	
     	</td>

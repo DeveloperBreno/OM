@@ -1208,7 +1208,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 			if ( typeof context.getElementsByTagName !== "undefined" ) {
 				return context.getElementsByTagName( tag );
 
-			// DocumentFragment nodes don't have gEbtn text-white 
+			// DocumentFragment nodes don't have gEbtn   
 			} else if ( support.qsa ) {
 				return context.querySelectorAll( tag );
 			}
@@ -1218,7 +1218,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 			var elem,
 				tmp = [],
 				i = 0,
-				// By happy coincidence, a (broken) gEbtn text-white  appears on DocumentFragment nodes too
+				// By happy coincidence, a (broken) gEbtn    appears on DocumentFragment nodes too
 				results = context.getElementsByTagName( tag );
 
 			// Filter out possible comments

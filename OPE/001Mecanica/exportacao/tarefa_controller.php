@@ -335,7 +335,14 @@ if ($acao == 'detalhepedido') {
 
 
 
-<button   style="float: left;" onclick="validarValorParcela()" type="submit" class="btn btn-light">Registrar novo pagamento</button>
+<button   
+style="float: left;" 
+onclick="validarValorParcela()" 
+type="submit" 
+class="btn btn-light">Registrar novo pagamento</button>
+
+
+
 </div> 
 
 </div>

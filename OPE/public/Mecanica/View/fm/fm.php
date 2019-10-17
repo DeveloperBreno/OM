@@ -27,7 +27,7 @@
 </select>
 
 <p style="text-align: center;"> ou </p>
-<button    onclick="fcm()"  href="buttons.html" class="btn btn-light btn text-white -block collapse-item  menuItem cadastrarVeiculo">
+<button    onclick="fcm()"  href="buttons.html" class="btn btn-light btn   -block collapse-item  menuItem cadastrarVeiculo">
 Cadastrar montadora</button>
 
 

@@ -20,7 +20,7 @@ function getData(dietorio, obj){
 }
     function vazio(obj) {
       if (obj.value.length < 1) {
-        $('input[name='+obj.name+']').addClass('btn text-white -danger')
+        $('input[name='+obj.name+']').addClass('btn')
         return true;
       }
       return false;
@@ -127,7 +127,7 @@ function getData(dietorio, obj){
       '<div class="card shadow mb-4">'+
       ' <!-- Card Header - Dropdown -->'+
         ' <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">'+
-        '   <h6 class="m-0 font-weight-bold text-primary">'+
+        '   <h6 class="m-0 font-weight-bold ">'+
         titulo+
         '</h6>'+
           '<button     onclick="$(\'.'+classe+'\').remove()"'+

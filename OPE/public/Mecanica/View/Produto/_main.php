@@ -11,13 +11,13 @@
 		<? } ?>
 
 	</select>
-	<button   onclick="addProdutoNoCard()" id="btn text-white caditem" type="submit" class="btn text-white  btn btn-light ">ADD item</button>
+	<button   onclick="addProdutoNoCard()" id="btn   caditem" type="submit" class="btn    btn btn-light ">ADD item</button>
 <? } ?>
 
 <?php
 function selectList($lista)
 { ?>
-	<button   class="btn text-white  btn text-white -success" onclick="cadastrarProduto()" id="cadastarProdutobtn text-white ">Cadastrar Produto</button>
+	<button   class="btn    btn   -success" onclick="cadastrarProduto()" id="cadastarProdutobtn   ">Cadastrar Produto</button>
 
 	<select id="idProduto">
 		<option value="null">Escolha um produto</option>
@@ -27,6 +27,6 @@ function selectList($lista)
 	</select>
 
 	<input id="qtdoaddprodutovalue" type="number" placeholder="Digite a QTDO" />
-	<button   class="btn text-white  btn text-white -danger" onclick="qtdoaddprodutobtn text-white ()" id="qtdoaddprodutobtn text-white ">ADD QTDO</button>
+	<button   class="btn    btn   -danger" onclick="qtdoaddprodutobtn   ()" id="qtdoaddprodutobtn   ">ADD QTDO</button>
 
 <? } ?>

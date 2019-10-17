@@ -11,7 +11,7 @@
 <p style="text-align: center;">Ou</p>
 <div class="col-sm-12" >
   <button   class="btn btn-light " onclick="cadastrarPecaInsert()">Cadastrar peça</button>
-  <button   class="btn text-white  btn text-white -success" onclick="inserirPecaNoPedido()">Add ao pedido</button>
+  <button   class="btn " onclick="inserirPecaNoPedido()">Add ao pedido</button>
 </div>
 </div>
 </div>

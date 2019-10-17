@@ -42,18 +42,18 @@ if (isset($listaDeProdutosDeUmaComanda[0]->nome_produto)) { ?>
     				
 			        <td> 
 			        
-			        <div id="btn text-white saddremoveone" >
-		        	<button   id="btn text-white addprodutobtn text-white js" class="c btn btn-light" 
+			        <div id="btn   saddremoveone" >
+		        	<button   id="btn   addprodutobtn   js" class="c btn btn-light" 
 		        		onclick="addone(<?= $v->id_produto_venda ?>)" > </button>  
 		        	   <?= $v->quantidade ?>
 
-		        	<button   id="btn text-white addprodutobtn text-white js" class="b btn btn-light" 
+		        	<button   id="btn   addprodutobtn   js" class="b btn btn-light" 
 		        		onclick="removeone(<?= $v->id_produto_venda ?>)" > </button>
 				        </div>
 			        </td>
 			        <td><?= $v->nome_produto ?></td>
 			        <td>R$ <?= str_replace('.', ',', $v->total); ?></td>
-			        <td><button   id="btn text-white removeiitemlista"  class="btn text-white  btn text-white -danger" 
+			        <td><button   id="btn   removeiitemlista"  class="btn    btn   -danger" 
 			        		onclick="removeItem(<?= $v->id_produto_venda ?>)" ><b> X </b></button></td>
 					
 		      	</tr>
@@ -102,7 +102,7 @@ if (($_SESSION['perfil'] == "A") || ($_SESSION['perfil'] == "F")) { ?>
 		});
 
         $('#addCliente').click(()  =>{
-			$("body").append('<div style="position: fixed;z-index: 1;width: 90%;float: left;top: 5%;height: 90%;left: 5%;box-shadow: 0px 0px 111px #000;padding: 5px;border-radius: 5px;" id="campoAddcliente"><h2 style="color: #6183c3;">Cadastar cliente </h2><button   id="close" onclick="closeCampo()" class="btn text-white  btn text-white -danger" style="float: right;margin-top: -41px;border-radius: 5px;">X</button><input type="text" id="cnome" placeholder="Nome" name="Nome" maxlength="45"><br><br><input type="number" id="ccelular" placeholder="Celular" name="Celular" maxlength="11"><br><br><input type="number" placeholder="Telefone" id="ctelefone"  name="Telefone" maxlength="11"><br><br><input type="number" id="ccep" onblur="pesquisarEndereco()" placeholder="CEP" name="Cep" maxlength="8"><br><br><input type="number" id="cnumero" placeholder="Número" name="Número" maxlength="4"><br><br><textarea name="Obs" id="cobs" maxlength="50" placeholder="Rua | Obs." ></textarea><br><br><button   id="salvar" class="btn text-white  btn text-white -success" onclick="salvarClientebtn text-white s()" style="width: 100%;border-radius: 5px;">Salvar</button>');
+			$("body").append('<div style="position: fixed;z-index: 1;width: 90%;float: left;top: 5%;height: 90%;left: 5%;box-shadow: 0px 0px 111px #000;padding: 5px;border-radius: 5px;" id="campoAddcliente"><h2 style="color: #6183c3;">Cadastar cliente </h2><button   id="close" onclick="closeCampo()" class="btn    btn   -danger" style="float: right;margin-top: -41px;border-radius: 5px;">X</button><input type="text" id="cnome" placeholder="Nome" name="Nome" maxlength="45"><br><br><input type="number" id="ccelular" placeholder="Celular" name="Celular" maxlength="11"><br><br><input type="number" placeholder="Telefone" id="ctelefone"  name="Telefone" maxlength="11"><br><br><input type="number" id="ccep" onblur="pesquisarEndereco()" placeholder="CEP" name="Cep" maxlength="8"><br><br><input type="number" id="cnumero" placeholder="Número" name="Número" maxlength="4"><br><br><textarea name="Obs" id="cobs" maxlength="50" placeholder="Rua | Obs." ></textarea><br><br><button   id="salvar" class="btn    btn   -success" onclick="salvarClientebtn   s()" style="width: 100%;border-radius: 5px;">Salvar</button>');
         });
 
         $('#pesquisaCliente').keyup(()  =>{
@@ -233,7 +233,7 @@ if (($_SESSION['perfil'] == "A") || ($_SESSION['perfil'] == "F")) { ?>
 </script>
 
 
-	<button   id="addCliente" class="btn text-white  btn text-white -success" >ADD cliente</button>  <input id="pesquisaCliente"  placeholder="Pesquisar cliente" type="text"> <b id="selectClientesAqui"></b>
+	<button   id="addCliente" class="btn    btn   -success" >ADD cliente</button>  <input id="pesquisaCliente"  placeholder="Pesquisar cliente" type="text"> <b id="selectClientesAqui"></b>
 
 
 
@@ -243,7 +243,7 @@ if (($_SESSION['perfil'] == "A") || ($_SESSION['perfil'] == "F")) { ?>
 <br>
 
 
-<button   id="frete" onclick="frete()" class="btn text-white  btn text-white -success" >Mapa</button>
+<button   id="frete" onclick="frete()" class="btn    btn   -success" >Mapa</button>
 <!-- <input onblur="alert(1)" type="number" name="frete" placeholder="Salvar Valor de Frete" style="font-size:21px; border-radius: 5px; color: #000; height: 60px;float: left;margin-top: 10px;width: 235px;margin-left: 5px;">
  -->
 	<select id="produtoadd" class="produtoadd" style="border: 1px solid #28a745;width: 213px;-webkit-appearance: none;color: #fff;" >
@@ -257,7 +257,7 @@ if (($_SESSION['perfil'] == "A") || ($_SESSION['perfil'] == "F")) { ?>
 	</select>
 
 
-<button   id="receber" class="btn text-white  btn text-white -danger">Finalizar</button>
+<button   id="receber" class="btn    btn   -danger">Finalizar</button>
 
 
 

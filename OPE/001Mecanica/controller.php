@@ -24,6 +24,7 @@ if($acao == 'icv') {
 }
 
 ($acao == 'listarCliente') ? createTable(listarCliente(),'detalheCliente','Detalhe', "ClienteId", array('ClienteNome','ClienteCep','ClienteCpfCnpj','ClienteDataCadastro','ClienteNumeroCasa','ClienteObs','ClienteEndereco','ClienteBairro'), array('Cliente','CEP','CPF / CNPJ','Data de cadastro','Número','OBS','Endereco','Bairro')) : '';
+
 ($acao == 'ma') ? getManutencaoAndamento() : '';
 ($acao == 'iniciarManutencao') ? iniciarManutencao($_REQUEST['obj']) : '';
 ($acao == 'pesquisarCliente') ? pesquisarCliente($_REQUEST['obj']) : '';
@@ -35,6 +36,7 @@ if($acao == 'icv') {
 ($acao == 'salvarCliente') ? salvarCliente($_POST):'';
 ($acao == 'cadastraTipoDeProdutoInsert') ? cadastraTipoDeProdutoInsert($_POST['nome_tipo_produto'], $_POST['estoque']):'';
 ($acao == 'motoboyLevaPedidoConfirmado') ? motoboyLevaPedidoConfirmado($_POST):'';	
+($acao == "senhaPadrao") ? exibirSenhaPadrao() : '';
 
 
 
@@ -55,6 +57,10 @@ if ($acao == 'contato') {
 
 if ($acao == 'AtualizarCliente') {
 	AtualizarCliente($_REQUEST);
+}
+
+if ($acao == 'AtualizarFornecedor') {
+	AtualizarFornecedor($_REQUEST);
 }
 
 if ($acao == 'salvarNovoContato') {
@@ -121,7 +127,7 @@ if ($acao == "inserevalor") {
 	$var = json_decode($_POST['obj']);
 	
 	inserevalor($var->idpedido, $var->valor );
-	//select($ls, "Selecionar modelo", array("ModeloNome") , "Selecione o modelo", "ModeloId", "btn text-white -primary", "ModeloId", "");
+	//select($ls, "Selecionar modelo", array("ModeloNome") , "Selecione o modelo", "ModeloId", "btn   -primary", "ModeloId", "");
 }
 
 
@@ -192,7 +198,7 @@ if ($acao == "relatorioFornecedores") {
 		  header('Content-Type: text/csv; charset=utf-8');  
 		  header('Content-Disposition: attachment; filename=Cliente_veiculo.csv');  
 		  $output = fopen("php://output", "w");  
-		  fputcsv($output, array('NOME','ID','CNPJ','DATA DE CADASTRO','OBS','CEP','Endereço','Número'));  
+		  fputcsv($output, array('NOME','ID','CNPJ','CADASTRODO EM','OBS','CEP','Endereço','Número'));  
 		  
 		  $query = "SELECT * FROM `Fornecedor`";  
 	
@@ -233,7 +239,6 @@ if ($acao == "detalheCliente") {
 	foreach ($detalheCliente as $k => $v) {
 		echo "<form id='clienteupdate' class='row'>";
 		echo "<div class='col-6 '>";
-		inputValue($v->ClienteId, 'ClienteId', '', '', '', 'hidden','');
 
 		inputValue($v->ClienteNome, 'ClienteNome', 'Nome', '', '', 'text','');
 		inputValue($v->ClienteCep, 'ClienteCep', 'CEP', '', '', 'number','');
@@ -242,15 +247,125 @@ if ($acao == "detalheCliente") {
 		
 		echo "<div class='col-6 '>";
 		inputValue($v->ClienteNumeroCasa, 'ClienteNumeroCasa', 'Número casa', '', '', 'text','');
-		inputValue($v->ClienteObs, 'ClienteObs', 'OBS', '', '', 'text','');
 		inputValue($v->ClienteEndereco, 'ClienteEndereco', 'Endereço', '', '', 'text','');
 		inputValue($v->ClienteBairro, 'ClienteBairro', 'Bairro', '', '', 'text','');
 		echo "</div>";
-		echo "<div class='row col-12 mt-3'>";
-		echo '<div class="col-3"><button class="btn-block btn btn-light" onclick="AtualizarCliente('.$v->ClienteId.')">Atualizar cadastro</button></div>';
-		echo '<div class="col-3"><button class="btn-block btn btn-light" onclick="contato('.$v->ClienteId.')">Listar contatos</button></div>';
-		echo '<div class="col-3"><button class="btn-block btn btn-light" onclick="Addcontatocliente('.$v->ClienteId.')">ADD contato</button></div>';
-		echo '<div class="col-3"><button class="btn-block btn btn-light" onclick="excluirCliente('.$v->ClienteId.')">Excluir cliente</button></div>';
+
+		echo "<div class='col-12 '>";		
+		inputValue($v->ClienteObs, 'ClienteObs', 'OBS', '', '', 'text','');
+		echo "</div>";
+	
+		
+
+
+		divOpen(" col-12 mt-3");
+		divOpen(" row pr-3 pl-3");	
+		
+		
+		divOpen(" col-3 p-0 ");
+		btn('btn-block btn-outline-dark', 
+			'Atualizar cliente',
+			'AtualizarCliente', 
+			$v->ClienteId );
+		divClose();		
+		
+		divOpen(" col-3 p-0 ");
+		btn('btn-block btn-outline-dark', 
+			'Listar contatos',
+			'contato', 
+			$v->ClienteId );
+		divClose();
+		
+		divOpen(" col-3 p-0 ");
+		btn('btn-block btn-outline-dark', 
+			'Add contato',
+			'Addcontatocliente', 
+			$v->ClienteId );
+		divClose();
+		
+		
+		divOpen(" col-3 p-0 ");
+		btn('btn-block btn-outline-dark', 
+			'Excluir cliente',
+			'excluirCliente', 
+			$v->ClienteId );
+		divClose();
+		inputValue($v->ClienteId, 'ClienteId', '', '', '', 'hidden','');
+
+		divClose();
+
+		divClose();
+
+		echo "</form>";
+	}
+
+	//exibirDetalheCliente($detalheCliente);
+}
+
+
+
+
+
+if ($acao == "detalheFornecedor") {
+
+	$id = $_POST['obj'];
+
+
+	$detalheFornecedor = detalheFornecedor($id);
+
+	foreach ($detalheFornecedor as $k => $v) {
+		echo "<form id='fornecedorupdate' class='row'>";
+		echo "<div class='col-6 '>";
+		inputValue($v->FornecedorNome, 'FornecedorNome', 'Nome', '', '', 'text','');
+		inputValue($v->FornecedorCep, 'FornecedorCep', 'CEP', '', '', 'number','');
+		inputValue($v->FornecedorCnpj, 'FornecedorCnpj', 'CPF / CNPJ', '', '', 'number','');
+		echo "</div>";
+		
+		echo "<div class='col-6 '>";
+		inputValue($v->FornecedorNumero, 'FornecedorNumeroCasa', 'Número', '', '', 'text','');
+		inputValue($v->FornecedorEndereco, 'FornecedorEndereco', 'Endereço', '', '', 'text','');
+		echo "</div>";
+		
+		divOpen("col-12");
+		inputValue($v->FornecedorObs, 'FornecedorObs', 'OBS', '', '', 'text','');
+		divClose();
+
+		echo "<div class='col-12 mt-3 '>";
+		
+		echo "<div class='row pl-3 pr-3'>";
+		
+		divOpen(" col-3 p-0 ");
+		btn('btn-block btn-outline-dark', 
+			'Atualizar',
+			'AtualizarFornecedor', 
+			$v->FornecedorId );
+		divClose();
+
+		divOpen(" col-3 p-0 ");
+		btn('btn-block btn-outline-dark', 
+			'Contato',
+			'contato', 
+			$v->FornecedorId );
+		divClose();
+		
+		
+		divOpen(" col-3 p-0 ");
+		btn('btn-block btn-outline-dark', 
+			'Add contato',
+			'AddcontatoFornecedor', 
+			$v->FornecedorId );
+		divClose();
+		
+		
+		divOpen(" col-3 p-0 ");
+		btn('btn-block btn-outline-dark', 
+			'Excluir Fornecedor',
+			'ExcluirFornecedor', 
+			$v->FornecedorId );
+		divClose();
+		
+		inputValue($v->FornecedorId, 'FornecedorId', '', '', '', 'hidden','');		
+		echo "</div>";
 		echo "</div>";
 		echo "</form>";
 	}
@@ -258,11 +373,52 @@ if ($acao == "detalheCliente") {
 	//exibirDetalheCliente($detalheCliente);
 }
 
+
 if ($acao == "confirmadoExcluir") {
 
 	$idParcela = excluirParcela($_POST['obj']);
 	echo $idParcela[0]->ParcelaId ;
 }
+
+
+if ($acao == "cadastrarFuncionario") {
+	echo "<form id='cadastrarFuncionario'>";
+		divOpen('row');
+			divOpen('col-6');
+				input('FuncionarioNome', 'Nome', 'Nome', '', 'text', 'required' );
+				input('FuncionarioCpf', 'CPF', 'CPF', '', 'number', 'required');
+			divClose();
+			divOpen('col-6');
+				radioSimNao('FuncionarioAdm', 'Administrador?');
+				exibirSenhaPadrao();
+			divClose();
+			divOpen('col-12');
+				btn('btn-outline-dark float-right', 'Cadastrar', 'cadastrarFuncionarioInsert','');
+			divClose();
+		divClose();
+	echo "</form>";
+}
+
+if ($acao == 'cadastrarFuncionarioInsert') {
+	echo 'cadastrarFuncionarioInsert';
+}
+
+if ($acao == "listarFuncionarios") {
+	$ls = listarFuncionarios();
+	createTable($ls,
+	"detalheFuncionario",
+	'Detalhe',
+	"FuncionarioId", 
+	array('FuncionarioNome','FuncionarioCep','FuncionarioCpf'),
+	array('Nome','CEP','CPF')
+	);
+
+	divOpen('col-12');
+		btn('btn-outline-dark', 'Cadastrar', 'cadastrarFuncionario', '');
+	divClose();
+}
+
+
 
 if ($acao == "listarfornecedores") {
 	$ls = listarfornecedores();
@@ -271,16 +427,15 @@ if ($acao == "listarfornecedores") {
 	'Detalhe',
 	"FornecedorId", 
 	array('FornecedorNome','FornecedorCnpj','FornecedorCadastro','FornecedorObs'),
-	array('Fornecedor','CNPJ','DATA DE CADASTRO','OBS.')
+	array('Fornecedor','CNPJ','CADASTRODO EM','OBS.')
 	
 	);
 }
 
 
-if ($acao == "cadastrarFornecedor") {
-	
-	
+if ($acao == "cadastrarFornecedor") {	
 	$class  = sv('Fornecedor', $_POST);
+	print_r($class);
 	salvarFornecedor($class);
 	echo '1';
 
@@ -289,24 +444,15 @@ if ($acao == "cadastrarFornecedor") {
 }
 
 
-
 if ($acao == "relatoriogeralemail") {
-	
-	
-	
-	$to      = 'developerbreno@gmail.com';
-	$subject = 'Relatórios';
-	$message = $url.'/controller.php?acao=relatoriogeral';
-	$headers = 'From: developerbreno@gmail.com' . "\r\n" .
-		'Reply-To: developerbreno@gmail.com' . "\r\n" .
-		'X-Mailer: PHP/' . phpversion();
-	
-	mail($to, $subject, $message, $headers);
 
-
+require '../../001Mecanica/appSendEmail/bibliotecas/PHPMailer/Exception.php';
+require '../../001Mecanica/appSendEmail/bibliotecas/PHPMailer/OAuth.php';
+require '../../001Mecanica/appSendEmail/bibliotecas/PHPMailer/PHPMailer.php';
+require '../../001Mecanica/appSendEmail/bibliotecas/PHPMailer/POP3.php';
+require '../../001Mecanica/appSendEmail/bibliotecas/PHPMailer/SMTP.php';
+require '../../001Mecanica/appSendEmail/envio.php';
 }
-
-
 
 if ($acao == "relatoriogeral") {
 	
@@ -376,7 +522,7 @@ if ($acao == 'motoboyLevaPedido') {
 			echo '<div role="alert" style="color: #000;" >Não há pedidos para entrega</div>';
 		}
 	}	
-	echo '<button   id="frete" onclick="frete()" class="btn text-white  btn text-white -success" >Mapa</button>';
+	echo '<button   id="frete" onclick="frete()" class="btn" >Mapa</button>';
 }
 ?>
 
@@ -408,7 +554,7 @@ if ($acao == 'getTiposProdutos') {
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-	<h6 class="m-0 font-weight-bold text-primary">Informações</h6>
+	<h6 class="m-0 font-weight-bold ">Informações</h6>
   </div>
   <div class="card-body">
 	<div class="table-responsive">
@@ -439,18 +585,12 @@ if ($acao == 'getTiposProdutos') {
   </div>
 </div>
 
-
-
-
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-	<h6 class="m-0 font-weight-bold text-primary">
-		Parcelas 
-		<button   class="btn btn-light" onclick="assparcela(<? echo $idpedido; ?>)" >ADD Parcela</button>
-
-		Total: R$  <? echo total($idpedido)[0]->total ; ?>
-
+	<h6 class="m-0 font-weight-bold ">
+		<button   class="btn btn-light" onclick="assparcela(<? echo $idpedido; ?>)" >ADD Parcela</button> 
+		<? text('Parcelas Total: R$ '.total($idpedido)[0]->total); ?>
 	</h6>
   </div>
   <div class="card-body">
@@ -461,11 +601,9 @@ if ($acao == 'getTiposProdutos') {
 			<th>data</th>
 			<th>Valor</th>
 			<th></th>
-			
 		  </tr>
 		</thead>
 		<tbody>
-		
 			<?
 				$parcelas = getparcelas($idpedido);
 				foreach ($parcelas as $p => $pv) {
@@ -488,9 +626,9 @@ if ($acao == 'getTiposProdutos') {
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-	<h6 class="m-0 font-weight-bold text-primary">
-		Peças
+	<h6 class="m-0 font-weight-bold ">
 		<button   class="btn btn-light" onclick="addPeca(<? echo $idpedido; ?>)" >ADD Peça</button>
+		<? text('Peças'); ?>
 
 
 	</h6>
@@ -530,9 +668,9 @@ if ($acao == 'getTiposProdutos') {
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-	<h6 class="m-0 font-weight-bold text-primary">
-		Serviços
+	<h6 class="m-0 font-weight-bold ">
 		<button   class="btn btn-light " onclick="addServico(<? echo $idpedido; ?>)" >ADD Serviço</button>
+		<? text('Serviços') ?>
 
 	</h6>
   </div>

@@ -12,7 +12,7 @@
     <div class="col-sm-12">
       <button   class="btn btn-light " onclick="cadastrarServicoInsert()">Cadastrar peça </button>
       
-      <button   class="btn text-white  btn text-white -success " onclick="inserirServicoNoPedido()">Add ao pedido</button>
+      <button   class="btn    btn   -success " onclick="inserirServicoNoPedido()">Add ao pedido</button>
     </div>
   </div>
 </div>

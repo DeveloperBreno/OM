@@ -16,7 +16,7 @@
       if(texto.length > 2){
         getData("<? echo $url; ?>controller.php?acao=pesquisarCliente", texto);
         setTimeout(function(){
-        $('#camposelectCliente').html(html);
+        $('#camposelectCliente').html(html);  
         }, 500); 
       }      
     });
@@ -34,8 +34,16 @@
 
 
 <p style="text-align: center;"> ou </p>
-<button   onclick="fcc()" class="btn btn-light mt-3 btn-block  menuItem ">
-Cadastrar</button>
+
+
+
+<? btn('btn-outline-dark btn-block  menuItem ', 
+    'Cadastrar cliente',
+    'fcc',
+    ''); ?>
+
+
+
 <br>
 
 
@@ -48,23 +56,35 @@ Cadastrar</button>
 
 <div class="col-6">
 
-<div class="selectVeiculoPorCliente">
-<br>
+<div class="selectVeiculoPorCliente mb-3">
+
 </div>
 
+<? btn('btn-outline-dark btn-block  menuItem cadastrarVeiculo', 
+    'Cadastrar veiculo',
+    'fcv',
+    ''); ?>
 
-<button    onclick="fcv()"  href="buttons.html" class="btn btn-light  btn-block mt-3 menuItem cadastrarVeiculo">
-Cadastrar</button>
 </div>
 
 
 <div class="col-12 ">
-  <textarea class="form-control bg-transparent text-white mb-3" id="PedidoObs" aria-label="With textarea" placeholder="Observação"></textarea>
+
+<? input('PedidoObs', 
+  'Obs', 'Obs',
+  'form-control mb-3', 
+  'text',
+  '' ); ?>
 
 
-<button   onclick="iniciarManutencao()" class="btn btn-light btn-block  menuItem cadastrarVeiculo">
-Iniciar manutenção
-</button>
+
+  <? btn('btn-outline-dark btn-block  menuItem cadastrarVeiculo', 
+    'Iniciar manutenção',
+    'iniciarManutencao',
+    ''); ?>
+
+
+
 </div>
 
 

@@ -1,11 +1,11 @@
 <?php session_start(); ?>
-<? require '../acesso.php'; ?>
-<? require_once "../importacao.php"; ?>
+<?php require '../acesso.php'; ?>
+<?php require_once "../importacao.php"; ?>
 <!DOCTYPE html>
 <html>
 <head>
 <title>Comanda</title>
-<? require '../inportacao.php'; ?>
+<?php require '../inportacao.php'; ?>
 <script src="/Mecanica/js/jquery/jquery.js"></script> 
 <script src="/Mecanica/js/site.js"></script> 
 

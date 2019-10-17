@@ -197,7 +197,7 @@ class ServiceCliente{
 		
 		INNER JOIN Cliente as c on (c.ClienteId = v.ClienteId)
 		
-		WHERE p.ManutencaoId = ? ";
+		WHERE p.ManutencaoId = ?  ";
 
 		$stmt = $this->conexao->prepare($quary);
 		$stmt->bindValue(1, $this->tarefa->__get('ClienteNome'));
@@ -298,7 +298,7 @@ function getidCliente($idpedido){;
 	$ls = $service->allCliente();
 	return $ls;
 	
-	//select($resultado, "Dono(a): ", array('ClienteNome', 'ClienteCpfCnpj'), "Selecione um dono(a)", "selectcliente", "btn text-white -primary", "ClienteId", 'listarVeiculo()');
+	//select($resultado, "Dono(a): ", array('ClienteNome', 'ClienteCpfCnpj'), "Selecione um dono(a)", "selectcliente", "btn   -primary", "ClienteId", 'listarVeiculo()');
 }
 
 
