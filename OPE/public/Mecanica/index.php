@@ -1,18 +1,18 @@
-<?php 
-  session_start(); 
-  
-  if (isset($_SESSION->FuncionarioAtivo)) {
-    session_abort();
-		header("Location: login.php");  
-  }
-  ?>
-<style>
-html *{
- text-transform: uppercase !important; 
+<?php
+session_start();
 
+if (isset($_SESSION->FuncionarioAtivo)) {
+  session_abort();
+  header("Location: login.php");
 }
+?>
+<style>
+  html * {
+    text-transform: uppercase !important;
 
-/* 
+  }
+
+  /* 
 .formCliente input[type='text'], .formCliente input[type='number'], .formCliente input[type='email']{
   background: #352d2d00 !important;color: #fff !important;border: 0px !important;
   text-transform: uppercase !important; 
@@ -34,214 +34,242 @@ input[type='text'], input[type='number']{
 }
 */
 
-body{
-		font-family: Georgia, serif;
-		background-image: url('blue.svg');
-	}
-
-
-.popupexcluirparcela{
-  width: 20%;
-position: fixed;
-height: 100px;
-z-index: 111;
-background: #000000bd;
-top: 119px;
-left: 40%;
-border-radius: 10px;
-display: none;
-text-align: center;
-font-size: large;
-border: 1px solid;
-padding-top: 10px;
-color: #fff;
-}
-
-@media only screen and (max-width: 1000px) {
-  body{
-    background-size: 0;
+  body {
+    font-family: Georgia, serif;
+    background-image: url('blue.svg');
   }
-  #espaco{
-    margin-top: 100px !important;
-  }
-  #nomeSistema, sup{
-    font-size: 15px !important;
-  }
-  
-}
 
 
+  .popupexcluirparcela {
+    width: 20%;
+    position: fixed;
+    height: 100px;
+    z-index: 111;
+    background: #000000bd;
+    top: 119px;
+    left: 40%;
+    border-radius: 10px;
+    display: none;
+    text-align: center;
+    font-size: large;
+    border: 1px solid;
+    padding-top: 10px;
+    color: #fff;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    body {
+      background-size: 0;
+    }
+
+    #espaco {
+      margin-top: 100px !important;
+    }
+
+    #nomeSistema,
+    sup {
+      font-size: 15px !important;
+    }
+
+  }
 </style>
 
 
 <? require 'View/acesso.php'; ?>
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>system of down</title>
+  <title>system of down</title>
 
-<? 	$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-			$p = explode("/", $actual_link);
-			array_pop($p);
-			$url = '';
-			foreach ($p as $k => $v) {
-				$url = $url . $v . '/';
-			} ?>
-
-
-<link rel="icon" href="ima/logo.svg">
-<? require 'View/importacao.php'; ?>
-<script src="<? echo $url; ?>js/jquery/jquery.js"></script> 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.js"
-integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-crossorigin="anonymous"></script>
-
-<!-- <link rel="stylesheet" type="text/css" href="<? echo $url; ?>css/site.css"> -->
-
-<script>
+  <? $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+  $p = explode("/", $actual_link);
+  array_pop($p);
+  $url = '';
+  foreach ($p as $k => $v) {
+    $url = $url . $v . '/';
+  } ?>
 
 
+  <link rel="icon" href="ima/logo.svg">
+  <? require 'View/importacao.php'; ?>
+  <script src="<? echo $url; ?>js/jquery/jquery.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 
+  <!-- <link rel="stylesheet" type="text/css" href="<? echo $url; ?>css/site.css"> -->
 
-var html = '';
-function getData(dietorio, obj){
-   html = '';
-    $.post(dietorio,
-    { obj: JSON.stringify(obj)},
-    function(data,status){
-      html = data;      
-    });
-}
-    function vazio(obj) {
-      if (obj.value.length < 1) {
-        $('input[name='+obj.name+']').addClass('btn-light')
-        return true;
-      }
-      return false;
+  <script>
+    var html = '';
+
+    function getData(dietorio, obj) {
+      html = '';
+      $.post(dietorio, {
+          obj: JSON.stringify(obj)
+        },
+        function(data, status) {
+          html = data;
+        });
     }
-    function validarCliente(obj){
-      if (vazio(obj[0]) != true && vazio(obj[1]) != true) {
-        salvaCliente()
+
+    function vazio(text, msg) {
+      if (text.length < 1) {
+        erro(msg);
       }
     }
-    
-    function contato(id){
+
+    function erro(text) {
+      alert("Preencha corretamente o campo: " + text);
+      throw new Error(" j j k j");
+    }
+
+    function maiorQue(text, len, msg) {
+      if (text.length > len) {
+        erro(text);
+      }
+    }
+
+    function validarCliente(obj) {
+      vazio(obj[0].value, 'nome');
+      vazio(obj[1].value, 'CPF');
+      maiorQue(obj[2].value, 8, "cep");
+      maiorQue(obj[1].value, 20, "CPF");
+      maiorQue(obj[6].value, 45, "Observação, utrapassou 45 caracteres");
+      
+      salvaCliente()
+    }
+
+    function contato(id) {
       event.preventDefault();
       getData('<? echo $url; ?>controller.php?acao=contato', id);
-      setTimeout(function(){ popUp(html, 'Contatos ', 'contasClientestelcel', '12') },  100); 
+      setTimeout(function() {
+        popUp(html, 'Contatos ', 'contasClientestelcel', '12')
+      }, 300);
 
-  }
-
-  function Addcontatocliente(id){
-    event.preventDefault();
-      $('.contasClientestelcel').remove();
-      getData('<? echo $url; ?>controller.php?acao=Addcontatocliente', id);
-      setTimeout(function(){ popUp(html, 'Add contato ', 'addccibd', '12') },   100); 
-  
     }
 
-  function excluirContato(id){
+    function Addcontatocliente(id) {
+      event.preventDefault();
+      $('.contasClientestelcel').remove();
+      getData('<? echo $url; ?>controller.php?acao=Addcontatocliente', id);
+      setTimeout(function() {
+        popUp(html, 'Add contato ', 'addccibd', '12')
+      }, 300);
+
+    }
+
+    function excluirContato(id) {
       $('.contasClientestelcel').remove();
       getData('<? echo $url; ?>controller.php?acao=excluirContato', id);
-  }
+    }
 
 
 
-    function excluirCliente(id){
+    function excluirCliente(id) {
       $('.dce').remove()
+
       getData('<? echo $url; ?>controller.php?acao=excluirCliente', id);
       listarCliente();
 
-  }
+    }
 
 
-  function salvarNovoContato(){
-    event.preventDefault();
-      let obj = event.target; 
+
+    function salvarNovoContato() {
+      event.preventDefault();
+      vazio($('#ClienteApelido').val(), 'Nome');
+
+      let obj = event.target;
       $(obj).parent().hide();
 
       getData('<? echo $url; ?>controller.php?acao=salvarNovoContato', $("#Addcontatocliente").serializeArray());
-      setTimeout(function(){
-      
+      setTimeout(function() {
+
         if (html.indexOf('1') >= 1) {
           fecharPopUP('addccibd');
           alert('Cadastrado');
-      }else{
-        $(obj).show(); 
+        } else {
+          $(obj).show();
 
-        $(obj).parent().show(); 
-        alert("Preencha corretamente");
-        
-      }
-    
-    },  100); 
+          $(obj).parent().show();
+          alert("Preencha corretamente");
 
-  }
+        }
+
+      }, 300);
+
+    }
 
 
-  
-  function AtualizarFornecedor() {
+
+    function AtualizarFornecedor() {
       event.preventDefault();
-      let obj = event.target; 
+      vazio($('#FornecedorNome').val(),'nome');
+      maiorQue($('#FornecedorNome').val(),45,'nome');
+      vazio($('#FornecedorCnpj').val(),'CNPJ');
+      maiorQue($('#FornecedorCnpj').val(), 14, 'CNPJ')
+      maiorQue($('#FornecedorCep').val(), 9, 'CEP');
+
+      let obj = event.target;
       getData('<? echo $url; ?>controller.php?acao=AtualizarFornecedor', $("#fornecedorupdate").serializeArray());
-      setTimeout(function(){
+      setTimeout(function() {
         if (html.indexOf('1') >= 1) {
-            $('.ffu').remove();
-            listarfornecedores();
-        }else{
-          $(obj).show();  
+          $('.ffu').remove();
+          listarfornecedores();
+        } else {
+          $(obj).show();
           alert("Preencha corretamente");
         }
-      },  100); 
+      }, 300);
     }
-  
+
     function AtualizarCliente() {
       event.preventDefault();
-      let obj = event.target; 
+      vazio( $('#ClienteNome').val() , 'nome');
+      vazio($('#ClienteCpfCnpj').val(), 'CNPJ / cpf');
+      let obj = event.target;
       $(obj).parent().hide();
-
-      getData('<? echo $url; ?>controller.php?acao=AtualizarCliente', $("#clienteupdate").serializeArray());
-      setTimeout(function(){
       
+      
+      getData('<? echo $url; ?>controller.php?acao=AtualizarCliente', $("#clienteupdate").serializeArray());
+      setTimeout(function() {
+
         if (html.indexOf('1') >= 1) {
           $('.dce').remove();
           listarCliente();
-      }else{
-        $(obj).show(); 
+        } else {
+          $(obj).show();
 
-        $(obj).parent().show(); 
-        alert("Preencha corretamente");
-        
-      }
-    
-    },  100); 
+          $(obj).parent().show();
+          alert("Preencha corretamente");
+
+        }
+
+      }, 300);
 
     }
 
     function salvaCliente() {
       $('.salvarCliente').hide();
       getData('<? echo $url; ?>controller.php?acao=SalvarCliente', $(".formCliente").serializeArray());
-      setTimeout(function(){
-      
+      setTimeout(function() {
+
         if (html.indexOf('1') >= 1) {
           $('.ClienteCd').remove();
           alert("cliente cadastrado!");
-      }else{
-        alert("Preencha corretamente");
-        $('.salvarCliente').show();
-      }
-    
-    },  100); 
+        } else {
+          alert("Preencha corretamente");
+          $('.salvarCliente').show();
+        }
+
+      }, 300);
 
     }
 
-    
 
-  
 
     function relatoriogeral() {
       window.location.href = "<? echo $url; ?>controller.php?acao=relatoriogeral";
@@ -250,79 +278,92 @@ function getData(dietorio, obj){
 
     function relatoriogeralemail() {
       getData('http://localhost:90/app_send_mail/processa_envio.php', null);
-      setTimeout(function(){
-        alert('Enviado para seu email');    
-   },  100); 
+      setTimeout(function() {
+        alert('Enviado para seu email');
+      }, 300);
     }
-    
-    
+
+
 
 
     // continua
     // passar clienteid e retornar um select com os 
     // carros se tiver caso nao tenha fala que nao tem
-    function listarVeiculo(){
+    function listarVeiculo() {
       let valinput = $('#selectcliente').val();
-        getData('<? echo $url; ?>controller.php?acao=vc', valinput)
-        setTimeout(function(){ $('.selectVeiculoPorCliente').html(html) },  100); 
-        
-    }
-    function listarCliente(){
-        getData('<? echo $url; ?>controller.php?acao=listarCliente', null)
-        setTimeout(function(){ popUp(html, 'Clientes', 'lca', '12') },  100); 
+      getData('<? echo $url; ?>controller.php?acao=vc', valinput)
+      setTimeout(function() {
+        $('.selectVeiculoPorCliente').html(html)
+      }, 300);
 
     }
 
-    
-    function iniciarManutencao(){
-        $('.cadastrarVeiculo').hide();
-        if($('#selectcliente').length == 0){
-          alert('Preencha corretamente');
-          $('.cadastrarVeiculo').show();
-          console.log('.cadastrarVeiculo');
+    function listarCliente() {
+      getData('<? echo $url; ?>controller.php?acao=listarCliente', null)
+      setTimeout(function() {
+        popUp(html, 'Clientes', 'lca', '12')
+      }, 300);
 
-          return null;
-        }
+    }
 
-        if($('#VeiculoId').val() == "null"){
-          alert('Preencha corretamente');
-          console.log('#VeiculoId');
-          $('.cadastrarVeiculo').show();
-          return null;
-        }
-        
-        let ClienteId = $('#selectcliente').val();
-        let VeiculoId = $('#VeiculoId').val();
-        let PedidoObs = $('#PedidoObs').val();
-        getData('<? echo $url; ?>controller.php?acao=iniciarManutencao',{ClienteId: ClienteId, VeiculoId: VeiculoId, PedidoObs: PedidoObs});
-        setTimeout(function(){
 
-          if (html.indexOf('1') >= 1) {
-            $('.imbox').remove()
-            alert("Pedido cadastrado!");
-            listarVeiculo();
-            $('.k-pager-refresh').click();
-            
-        }else{
+    function iniciarManutencao() {
+      $('.cadastrarVeiculo').hide();
+      if ($('#selectcliente').length == 0) {
+        alert('Preencha corretamente');
+        $('.cadastrarVeiculo').show();
+        console.log('.cadastrarVeiculo');
+
+        return null;
+      }
+
+      if ($('#VeiculoId').val() == "null") {
+        alert('Preencha corretamente');
+        console.log('#VeiculoId');
+        $('.cadastrarVeiculo').show();
+        return null;
+      }
+
+      let ClienteId = $('#selectcliente').val();
+      let VeiculoId = $('#VeiculoId').val();
+      let PedidoObs = $('#PedidoObs').val();
+      getData('<? echo $url; ?>controller.php?acao=iniciarManutencao', {
+        ClienteId: ClienteId,
+        VeiculoId: VeiculoId,
+        PedidoObs: PedidoObs
+      });
+      setTimeout(function() {
+
+        if (html.indexOf('1') >= 1) {
+          $('.imbox').remove()
+          alert("Pedido cadastrado!");
+          listarVeiculo();
+          $('.k-pager-refresh').click();
+
+        } else {
           alert('Preencha corretamente')
           $('.cadastrarVeiculo').show();
         }
-        },  100); 
+      }, 300);
     }
 
     function salvarCliente() {
       event.preventDefault();
-        validarCliente($(".formCliente").serializeArray());
+      validarCliente($(".formCliente").serializeArray());
     }
 
     function ma() {
       getData('<? echo $url; ?>View/ma/ma.php', null)
-      setTimeout(function(){ popUp(html, 'Manutenções em andamento', 'ma', '12') },   100); 
+      setTimeout(function() {
+        popUp(html, 'Manutenções em andamento', 'ma', '12')
+      }, 300);
     }
-    
+
     function rm() {
       getData('<? echo $url; ?>View/rm/rm.php', null)
-      setTimeout(function(){ popUp(html, 'Relatório de manutenção', 'rm', '12') },  100); 
+      setTimeout(function() {
+        popUp(html, 'Relatório de manutenção', 'rm', '12')
+      }, 300);
     }
 
     function cadastrarFuncionarioInsert() {
@@ -332,511 +373,553 @@ function getData(dietorio, obj){
 
     function cadastrarFornecedorInsert() {
       $('.cadastrarFornecedorInsert').hide();
+      
+
+
+
       getData('<? echo $url; ?>controller.php?acao=cadastrarFornecedor', $("#cadastrarFornecedor").serializeArray())
-      setTimeout(function(){ 
-    if (html.indexOf('1') >= 1) {
-      $('.ff').remove();
-      alert("Fornecedor cadastrado");
+      setTimeout(function() {
+        if (html.indexOf('1') >= 1) {
+          $('.ff').remove();
+          alert("Fornecedor cadastrado");
 
-      }else{
-        alert("preencha corretamente");
-        $('.cadastrarFornecedorInsert').show();
-      }
-    },  100); 
-    
+        } else {
+          alert("preencha corretamente");
+          $('.cadastrarFornecedorInsert').show();
+        }
+      }, 300);
+
     }
 
-    function cadastrarFuncionario(){
+    function cadastrarFuncionario() {
       getData('<? echo $url; ?>controller.php?acao=cadastrarFuncionario', null)
-      setTimeout(function(){ popUp(html, 'Cadastrar funcionário', 'fcftoinse', '12') },   100); 
+      setTimeout(function() {
+        popUp(html, 'Cadastrar funcionário', 'fcftoinse', '12')
+      }, 300);
     }
 
-    function listarFuncionarios(){
+    function listarFuncionarios() {
       $('.navbar-toggler').click()
       getData('<? echo $url; ?>controller.php?acao=listarFuncionarios', null)
-      setTimeout(function(){ popUp(html, 'Funcionários', 'lff', '12') },  100); 
+      setTimeout(function() {
+        popUp(html, 'Funcionários', 'lff', '12')
+      }, 300);
     }
 
-    function senhaPadrao(){
+    function senhaPadrao() {
       $('.navbar-toggler').click()
       getData('<? echo $url; ?>controller.php?acao=senhaPadrao', null)
-      setTimeout(function(){ popUp(html, 'Senha padrão', 'exibirsp', '12') },   100); 
+      setTimeout(function() {
+        popUp(html, 'Senha padrão', 'exibirsp', '12')
+      }, 300);
     }
 
-    
 
-    function listarfornecedores(){
+
+    function listarfornecedores() {
       $('.navbar-toggler').click()
       getData('<? echo $url; ?>controller.php?acao=listarfornecedores', null)
-      setTimeout(function(){ popUp(html, 'Fornecedores', 'lf', '12') },   100); 
+      setTimeout(function() {
+        popUp(html, 'Fornecedores', 'lf', '12')
+      }, 300);
     }
 
-    function relatorioFornecedores(){
+    function relatorioFornecedores() {
       window.location.href = "<? echo $url; ?>controller.php?acao=relatorioFornecedores";
-   }
+    }
 
     function fcf() {
       getData('<? echo $url; ?>View/ff/ff.php', null)
-      setTimeout(function(){ popUp(html, 'Cadastrar fornecedor', 'ff', '12') },   100); 
+      setTimeout(function() {
+        popUp(html, 'Cadastrar fornecedor', 'ff', '12')
+      }, 300);
     }
-  function fcc() {
-    getData('<? echo $url; ?>View/Cliente/cadastrarCliente.php', null)
-    setTimeout(function(){ popUp(html, 'Cadastrar cliente', 'ClienteCd', '12') },   100); 
-  }
-  function addPeca(){
-    getData('<? echo $url; ?>View/fp/fp.php', null)
-    setTimeout(function(){ popUp(html, 'Add peça', 'pecaadd', 6) },   100); 
-  }
-  function addServico(){
-    getData('<? echo $url; ?>View/fs/fs.php', null)
-    setTimeout(function(){ popUp(html, 'Add serviço', 'servicoadd', 6) },   100); 
-  }
-  function fecharPopUP(classe){
-    $('.'+classe).hide('fast');
-    $('.'+classe).remove();
 
-    
-  }
-  function popUp(data, titulo, classe, tamanho) {
-    fecharPopUP(classe);
-  
-    $(".toAdd").prepend(' '+
-    '<div class="col-xl-'+tamanho+'  rounded col-lg-'+tamanho+' '+
-    classe+ '  " >'+
-      '<div class="card shadow mb-4" style="background-color:#fff; color: #fff;" >'+
-      ' <!-- Card Header - Dropdown -->'+
-        ' <div class="bg-white border border-botton py-3 d-flex flex-row align-items-center justify-content-between">'+
-        '   <h6 style="color: #000 !important;;font-size: 20px;" class="m-0 font-weight-bold pl-3">'+
-        titulo+
-        '</h6>'+
-          "<button onclick=\"fecharPopUP('"+classe+"')\""+
-          ' class="close float-right" aria-label="Close" style="opacity: 1">' +
-          '<span aria-hidden="true" style="background: #fff !important;padding: 5px 10px;border-radius: 24px !important;" >&times;</span>'+
-          '</button>'+
-        ' </div>'+
-        ' <div class="card-body">'+                    
-      data+
-      ' </div>'+
-      '</div>'+
-    '</div>');
-    $('.'+classe).hide();
-    $('.'+classe).show('slow');
-          
-    window.scrollTo(0, 0);
+    function fcc() {
+      getData('<? echo $url; ?>View/Cliente/cadastrarCliente.php', null)
+      setTimeout(function() {
+        popUp(html, 'Cadastrar cliente', 'ClienteCd', '12')
+      }, 300);
+    }
 
-   
-  }
-  function fcv(){
-    getData('<? echo $url; ?>View/cv/cv.php', null);
+    function addPeca() {
+      getData('<? echo $url; ?>View/fp/fp.php', null)
+      setTimeout(function() {
+        popUp(html, 'Add peça', 'pecaadd', 6)
+      }, 300);
+    }
 
-    setTimeout(function(){ 
-      popUp(html, 'Cadastrar veiculo', 'cvbox', '12') 
-     },   100); 
-  }
+    function addServico() {
+      getData('<? echo $url; ?>View/fs/fs.php', null)
+      setTimeout(function() {
+        popUp(html, 'Add serviço', 'servicoadd', 6)
+      }, 300);
+    }
 
-  function confirmadoExcluir(id){
-    $('.popupexcluirparcela').hide();
-    getData('<? echo $url; ?>controller.php?acao=confirmadoExcluir', id);
-    setTimeout(function(){ pedidoDeManutencao($('.pedidoatual').val()) },   100); 
-
-  }
+    function fecharPopUP(classe) {
+      $('.' + classe).hide('fast');
+      $('.' + classe).remove();
 
 
-  function removerParcela(id){
-    $('.popupexcluirparcela').html("Excluir parcela <br>"+
-    " <button class=\"btn btn-light\" onclick=\"confirmadoExcluir("+id+")\">Excluir</button>" +
-    " <button class=\"btn btn-info \" onclick=\"$('.popupexcluirparcela').hide(); \">Cancelar</button>");
-    $('.popupexcluirparcela').show();
-  }
+    }
+
+    function popUp(data, titulo, classe, tamanho) {
+      fecharPopUP(classe);
+
+      $(".toAdd").prepend(' ' +
+        '<div class="col-xl-' + tamanho + '  rounded col-lg-' + tamanho + ' ' +
+        classe + '  " >' +
+        '<div class="card shadow mb-4" style="background-color:#fff;" >' +
+        ' <!-- Card Header - Dropdown -->' +
+        ' <div class="bg-white border border-botton py-3 d-flex flex-row align-items-center justify-content-between">' +
+        '   <h6 style="color: #000 !important;;font-size: 20px;" class="m-0 font-weight-bold pl-3">' +
+        titulo +
+        '</h6>' +
+        "<button onclick=\"fecharPopUP('" + classe + "')\"" +
+        ' class="close float-right" aria-label="Close" style="opacity: 1">' +
+        '<span aria-hidden="true" style="background: #fff !important;padding: 5px 10px;border-radius: 24px !important;" >&times;</span>' +
+        '</button>' +
+        ' </div>' +
+        ' <div class="card-body">' +
+        data +
+        ' </div>' +
+        '</div>' +
+        '</div>');
+      $('.' + classe).hide();
+      $('.' + classe).show('slow');
+      window.scrollTo(0, 0);
+    }
+
+    function fcv() {
+      getData('<? echo $url; ?>View/cv/cv.php', null);
+
+      setTimeout(function() {
+        popUp(html, 'Cadastrar veiculo', 'cvbox', '12')
+      }, 300);
+    }
+
+    function confirmadoExcluir(id) {
+      $('.popupexcluirparcela').hide();
+      getData('<? echo $url; ?>controller.php?acao=confirmadoExcluir', id);
+      setTimeout(function() {
+        pedidoDeManutencao($('.pedidoatual').val())
+      }, 300);
+
+    }
 
 
-  function im(){
-    getData('<? echo $url; ?>View/im/im.php', null);
-    
-    setTimeout(function(){ 
-      popUp(html, 'Iniciar manutenção', 'imbox', '12');
-    },  100); 
-
-  }
-
-  function pedidoatual(id){
-    $('.pedidoatual').remove();
-    $("#page-top").append('<input type="hidden" class="pedidoatual" value="'+id+'">');
-    
-  }
-
-  function pedidoDeManutencao(PedidoId){
-    pedidoatual(PedidoId);
-    popUp('<div class="infoCliente" ></div>', 'Detalhes da manutenção', 'boxmanutencao', 12)
-    getData('<? echo $url; ?>controller.php?acao=editarPedido', PedidoId);
-
-    // prototipo
-    //getData('<? echo $url; ?>controller.php?acao=prototipo', PedidoId);
-    setTimeout(function(){ 
-      popUp(html, 'Detalhes da manutenção', 'boxmanutencao', 12)
-    },  100); 
-    
-  }
-  
-  function cadastrarPecaInsert() {
-    getData('<? echo $url; ?>View/cp/cp.php', null);
-    setTimeout(function(){ 
-      popUp(html, 'Cadastrar peça', 'cpbox', '12') 
-    },  100); 
-  }
+    function removerParcela(id) {
+      $('.popupexcluirparcela').html("Excluir parcela <br>" +
+        " <button class=\"btn btn-light\" onclick=\"confirmadoExcluir(" + id + ")\">Excluir</button>" +
+        " <button class=\"btn btn-info \" onclick=\"$('.popupexcluirparcela').hide(); \">Cancelar</button>");
+      $('.popupexcluirparcela').show();
+    }
 
 
-  function cadastrarServicoInsert() {
-    getData('<? echo $url; ?>View/cs/cs.php', null);
-    setTimeout(function(){ 
-      popUp(html, 'Cadastrar serviço', 'csbox', '12') 
-    },  100); 
-  }
+    function im() {
+      getData('<? echo $url; ?>View/im/im.php', null);
 
-  function fcm(){
-    getData('<? echo $url; ?>View/fm/fm.php', null);
+      setTimeout(function() {
+        popUp(html, 'Iniciar manutenção', 'imbox', '12');
+      }, 300);
 
-    setTimeout(function(){ 
-      popUp(html, 'cadastrar modelo', 'cmbox', '12') 
-    },  100); 
-  }
-  function detalheCliente(idcliente){
-    getData('<? echo $url; ?>controller.php?acao=detalheCliente', idcliente);
-    setTimeout(function(){ 
-      popUp(html, 'Detalhes do cliente', 'dce', '12') 
-    },  100); 
-  }
-  function detalheFornecedor(idfornecedor){
-    getData('<? echo $url; ?>controller.php?acao=detalheFornecedor', idfornecedor);
-    setTimeout(function(){ 
-      popUp(html, 'Detalhes do fornecedor', 'ffu', '12') 
-    },  100); 
-  }
-  function assparcela(idpedido){
-    getData('<? echo $url; ?>controller.php?acao=cpp', idpedido);
+    }
 
-    setTimeout(function(){ 
-      popUp(html, 'cadastrar parcela', 'cpp', '6') 
-    },  100); 
+    function pedidoatual(id) {
+      $('.pedidoatual').remove();
+      $("#page-top").append('<input type="hidden" class="pedidoatual" value="' + id + '">');
 
-  }
-  function salvarparcela(idpedido){
-    $('.cadastrarVeiculo').hide();
-    getData('<? echo $url; ?>controller.php?acao=inserevalor', {idpedido: idpedido, valor: $('#np').val()});
-    setTimeout(function(){ 
-    if (html.indexOf('1') >= 1) {
-      alert("Parcela cadastrada");
-      $('.cpp').remove();
-      pedidoDeManutencao(idpedido);
-      }else{
-        alert("preencha corretamente");
-        $('.cadastrarVeiculo').show();
-      }
-    },  100); 
-  }
+    }
+
+    function pedidoDeManutencao(PedidoId) {
+      pedidoatual(PedidoId);
+      popUp('<div class="infoCliente" ></div>', 'Detalhes da manutenção', 'boxmanutencao', 12)
+      getData('<? echo $url; ?>controller.php?acao=editarPedido', PedidoId);
+
+      // prototipo
+      //getData('<? echo $url; ?>controller.php?acao=prototipo', PedidoId);
+      setTimeout(function() {
+        popUp(html, 'Detalhes da manutenção', 'boxmanutencao', 12)
+      }, 300);
+
+    }
+
+    function cadastrarPecaInsert() {
+      getData('<? echo $url; ?>View/cp/cp.php', null);
+      setTimeout(function() {
+        popUp(html, 'Cadastrar peça', 'cpbox', '12')
+      }, 300);
+    }
+
+
+    function cadastrarServicoInsert() {
+      getData('<? echo $url; ?>View/cs/cs.php', null);
+      setTimeout(function() {
+        popUp(html, 'Cadastrar serviço', 'csbox', '12')
+      }, 300);
+    }
+
+    function fcm() {
+      getData('<? echo $url; ?>View/fm/fm.php', null);
+
+      setTimeout(function() {
+        popUp(html, 'cadastrar modelo', 'cmbox', '12')
+      }, 300);
+    }
+
+    function detalheCliente(idcliente) {
+      getData('<? echo $url; ?>controller.php?acao=detalheCliente', idcliente);
+      setTimeout(function() {
+        popUp(html, 'Detalhes do cliente', 'dce', '12')
+      }, 300);
+    }
+
+    function detalheFornecedor(idfornecedor) {
+      getData('<? echo $url; ?>controller.php?acao=detalheFornecedor', idfornecedor);
+      setTimeout(function() {
+        popUp(html, 'Detalhes do fornecedor', 'ffu', '12')
+      }, 300);
+    }
+
+    function assparcela(idpedido) {
+      getData('<? echo $url; ?>controller.php?acao=cpp', idpedido);
+
+      setTimeout(function() {
+        popUp(html, 'cadastrar parcela', 'cpp', '6')
+      }, 300);
+
+    }
+
+    function salvarparcela(idpedido) {
+      $('.cadastrarVeiculo').hide();
+      getData('<? echo $url; ?>controller.php?acao=inserevalor', {
+        idpedido: idpedido,
+        valor: $('#np').val()
+      });
+      setTimeout(function() {
+        if (html.indexOf('1') >= 1) {
+          alert("Parcela cadastrada");
+          $('.cpp').remove();
+          pedidoDeManutencao(idpedido);
+        } else {
+          alert("preencha corretamente");
+          $('.cadastrarVeiculo').show();
+        }
+      }, 300);
+    }
+
     function getDadosEnderecoPorCEP(cep) {
 
 
-      $.get('https://viacep.com.br/ws/'+cep+'/json/unicode/',
-          
-          function(data,status){
-              $('#CEP').val(data.logradouro) 
-          });
+      $.get('https://viacep.com.br/ws/' + cep + '/json/unicode/',
 
-  }
+        function(data, status) {
+          $('#CEP').val(data.logradouro)
+        });
+
+    }
 
 
-  $( document ).ready(function() {
-    ma();
- 
+    $(document).ready(function() {
+      ma();
 
-    
 
-    $('.cadastrarFornecedorInsert').click(()  =>{   
-      $('.navbar-toggler').click()
-      cadastrarFornecedorInsert(); 
-  });
 
-  $('.relatorioManutencao').click(()  =>{   
-    $('.navbar-toggler').click()
-    rm(); 
-  });
-  
-  $('.cadastrarFornecedor').click(()  =>{   
-    $('.navbar-toggler').click()
-    fcf(); 
-  });
-  
-  $('.cadastrarCliente').click(()  =>{  
-    $('.navbar-toggler').click() 
-      fcc(); 
-  });
 
-  
-  
-  $('.salvarCliente').click(()  =>{
-    $('.navbar-toggler').click()
-      salvarCliente()
-      
-  });
-
-  $('.im').click(()  =>{
-    $('.navbar-toggler').click()
-    im()
-    
-});
-    (function($) {
-      "use strict"; // Start of use strict
-    
-      // Toggle the side navigation
-      $("#sidebarToggle, #sidebarToggleTop").on('click', function(e) {
-        $("body").toggleClass("sidebar-toggled");
-        $(".sidebar").toggleClass("toggled");
-        if ($(".sidebar").hasClass("toggled")) {
-          $('.sidebar .collapse').collapse('hide');
-        };
-      });
-    
-      // Close any open menu accordions when window is resized below 768px
-      $(window).resize(function() {
-        if ($(window).width() < 768) {
-          $('.sidebar .collapse').collapse('hide');
-        };
-      });
-    
-      // Prevent the content wrapper from scrolling when the fixed side navigation hovered over
-      $('body.fixed-nav .sidebar').on('mousewheel DOMMouseScroll wheel', function(e) {
-        if ($(window).width() > 768) {
-          var e0 = e.originalEvent,
-            delta = e0.wheelDelta || -e0.detail;
-          this.scrollTop += (delta < 0 ? 1 : -1) * 30;
-          e.preventDefault();
-        }
-      });
-    
-      // Scroll to top button appear
-      $(document).on('scroll', function() {
-        var scrollDistance = $(this).scrollTop();
-        if (scrollDistance > 100) {
-          $('.scroll-to-top').fadeIn();
-        } else {
-          $('.scroll-to-top').fadeOut();
-        }
-      });
-    
-      // Smooth scrolling using jQuery easing
-      $(document).on('click', 'a.scroll-to-top', function(e) {
+      $('.cadastrarFornecedorInsert').click(() => {
         $('.navbar-toggler').click()
-        var $anchor = $(this);
-        $('html, body').stop().animate({
-          scrollTop: ($($anchor.attr('href')).offset().top)
-        }, 1000, 'easeInOutExpo');
-        e.preventDefault();
+        cadastrarFornecedorInsert();
       });
-    
-    })(jQuery); // End of use strict
-});
-</script>
 
-<!-- <base href="https://demos.telerik.com/kendo-ui/grid/index"> -->
-    <style>html { font-size: 14px; font-family: Arial, Helvetica, sans-serif; }</style>
-    <title></title>
-    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.3.917/styles/kendo.default-v2.min.css" />
+      $('.relatorioManutencao').click(() => {
+        $('.navbar-toggler').click()
+        rm();
+      });
 
-    <script src="https://kendo.cdn.telerik.com/2019.3.917/js/jquery.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2019.3.917/js/kendo.all.min.js"></script>
-    
-    <!-- <base href="https://demos.telerik.com/kendo-ui/grid/excel-export"> -->
-    <style>html { font-size: 14px; font-family: Arial, Helvetica, sans-serif; }</style>
-    <title></title>
-    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.3.917/styles/kendo.default-v2.min.css" />
+      $('.cadastrarFornecedor').click(() => {
+        $('.navbar-toggler').click()
+        fcf();
+      });
 
-    <script src="https://kendo.cdn.telerik.com/2019.3.917/js/jquery.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2019.3.917/js/jszip.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2019.3.917/js/kendo.all.min.js"></script>
+      $('.cadastrarCliente').click(() => {
+        $('.navbar-toggler').click()
+        fcc();
+      });
+
+
+
+      $('.salvarCliente').click(() => {
+        $('.navbar-toggler').click()
+        salvarCliente()
+
+      });
+
+      $('.im').click(() => {
+        $('.navbar-toggler').click()
+        im()
+
+      });
+      (function($) {
+        "use strict"; // Start of use strict
+
+        // Toggle the side navigation
+        $("#sidebarToggle, #sidebarToggleTop").on('click', function(e) {
+          $("body").toggleClass("sidebar-toggled");
+          $(".sidebar").toggleClass("toggled");
+          if ($(".sidebar").hasClass("toggled")) {
+            $('.sidebar .collapse').collapse('hide');
+          };
+        });
+
+        // Close any open menu accordions when window is resized below 768px
+        $(window).resize(function() {
+          if ($(window).width() < 768) {
+            $('.sidebar .collapse').collapse('hide');
+          };
+        });
+
+        // Prevent the content wrapper from scrolling when the fixed side navigation hovered over
+        $('body.fixed-nav .sidebar').on('mousewheel DOMMouseScroll wheel', function(e) {
+          if ($(window).width() > 768) {
+            var e0 = e.originalEvent,
+              delta = e0.wheelDelta || -e0.detail;
+            this.scrollTop += (delta < 0 ? 1 : -1) * 30;
+            e.preventDefault();
+          }
+        });
+
+        // Scroll to top button appear
+        $(document).on('scroll', function() {
+          var scrollDistance = $(this).scrollTop();
+          if (scrollDistance > 100) {
+            $('.scroll-to-top').fadeIn();
+          } else {
+            $('.scroll-to-top').fadeOut();
+          }
+        });
+
+        // Smooth scrolling using jQuery easing
+        $(document).on('click', 'a.scroll-to-top', function(e) {
+          $('.navbar-toggler').click()
+          var $anchor = $(this);
+          $('html, body').stop().animate({
+            scrollTop: ($($anchor.attr('href')).offset().top)
+          }, 1000, 'easeInOutExpo');
+          e.preventDefault();
+        });
+
+      })(jQuery); // End of use strict
+    });
+  </script>
+
+  <!-- <base href="https://demos.telerik.com/kendo-ui/grid/index"> -->
+  <style>
+    html {
+      font-size: 14px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  </style>
+  <title></title>
+  <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.3.917/styles/kendo.default-v2.min.css" />
+
+  <script src="https://kendo.cdn.telerik.com/2019.3.917/js/jquery.min.js"></script>
+  <script src="https://kendo.cdn.telerik.com/2019.3.917/js/kendo.all.min.js"></script>
+
+  <!-- <base href="https://demos.telerik.com/kendo-ui/grid/excel-export"> -->
+  <style>
+    html {
+      font-size: 14px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  </style>
+  <title></title>
+  <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.3.917/styles/kendo.default-v2.min.css" />
+
+  <script src="https://kendo.cdn.telerik.com/2019.3.917/js/jquery.min.js"></script>
+  <script src="https://kendo.cdn.telerik.com/2019.3.917/js/jszip.min.js"></script>
+  <script src="https://kendo.cdn.telerik.com/2019.3.917/js/kendo.all.min.js"></script>
 
 
 </head>
 
-<body id="page-top" style="background-repeat: no-repeat;background-attachment: fixed; background-position: center; " >
+<body id="page-top" style="background-repeat: no-repeat;background-attachment: fixed; background-position: center; ">
 
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-  <div class="row col-12 p-0 mr-0  ml-0 bg-white text-dark mb-3 " 
-  style="position: fixed;z-index:2; border-botton: 2px solid #000">
-  <div class="col-12">
-  <nav class="navbar navbar-expand-lg p-0">
-   <!-- <div id="nomeSistema" class="sidebar-brand-text mx-3 text-primary" >system of <sup>down</sup></div> -->
-   <button class="p-0 m-0 navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="m-0 navbar-toggler-icon" style="color: #007bff !important;font-size: 37px !important;margin-top: 10px;">≡</span>
-  </button>
-  <div class="navbar-collapse collapse" id="navbarNav" style="">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-<!-- Sidebar - Brand -->
+    <div class="row col-12 p-0 mr-0  ml-0 bg-white text-dark mb-3 " style="position: fixed;z-index:2; border-botton: 2px solid #000">
+      <div class="col-12">
+        <nav class="navbar navbar-expand-lg p-0">
+          <!-- <div id="nomeSistema" class="sidebar-brand-text mx-3 text-primary" >system of <sup>down</sup></div> -->
+          <button class="p-0 m-0 navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="m-0 navbar-toggler-icon" style="color: #007bff !important;font-size: 37px !important;margin-top: 10px;">≡</span>
+          </button>
+          <div class="navbar-collapse collapse" id="navbarNav" style="">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <!-- Sidebar - Brand -->
 
-<li class="nav-item">
-        <button   class="im btn btn-light ">Iniciar manutenção</button>      </li>
-      </li>
-<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-  <div class="sidebar-brand-icon rotate-n-15">
-  <i class="fas fa-laugh-wink"></i>
-  </div>
-</a>
-
-
-      </li>
-      <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle text-dark bg-white"  id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Cliente 
-        <i class="fas fa-bell fa-fw"></i>
-                <!-- Counter - Alerts -->
+              <li class="nav-item">
+                <button class="im btn btn-light ">Iniciar manutenção</button> </li>
+              </li>
+              <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                  <i class="fas fa-laugh-wink"></i>
+                </div>
               </a>
-              <!-- Dropdown - Alerts -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in text-dark bg-white" aria-labelledby="alertsDropdown">
-                
-        <button    class="border-0 btn btn-light btn-block menuItem cadastrarCliente text-dark bg-white">
-Cadastrar</button>
 
-<button  onclick="listarCliente()" class="border-0 btn btn-light btn-block menuItem text-dark bg-white">
-Listar</button>
+
+              </li>
+              <li class="nav-item dropdown no-arrow mx-1">
+                <a class="nav-link dropdown-toggle text-dark bg-white" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Cliente
+                  <i class="fas fa-bell fa-fw"></i>
+                  <!-- Counter - Alerts -->
+                </a>
+                <!-- Dropdown - Alerts -->
+                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in text-dark bg-white" aria-labelledby="alertsDropdown">
+
+                  <button class="border-0 btn btn-light btn-block menuItem cadastrarCliente text-dark bg-white">
+                    Cadastrar</button>
+
+                  <button onclick="listarCliente()" class="border-0 btn btn-light btn-block menuItem text-dark bg-white">
+                    Listar</button>
+                </div>
+              </li>
+
+
+
+              <li class="nav-item dropdown no-arrow mx-1">
+                <a class="nav-link dropdown-toggle text-dark bg-white" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Fornecedores
+                  <i class="fas fa-bell fa-fw"></i>
+                  <!-- Counter - Alerts -->
+                </a>
+                <!-- Dropdown - Alerts -->
+                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in text-dark bg-white" aria-labelledby="alertsDropdown" style="width: 350px;">
+
+                  <button class="border-0 btn-block btn-light btn menuItem cadastrarFornecedor text-dark bg-white">
+                    Cadastrar</button>
+
+                  <button onclick="listarfornecedores()" class="border-0 btn-block btn-light btn menuItem text-dark bg-white">
+                    Listar</button>
+
+                  <button onclick="relatorioFornecedores()" class=" border-0 btn-block btn-light btn menuItem text-dark bg-white">
+                    Relatório de fornecedores</button>
+                </div>
+              </li>
+
+
+
+
+
+
+
+              <li class="nav-item dropdown no-arrow mx-1">
+                <a class="border-0 nav-link dropdown-toggle text-dark bg-white" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Relatórios
+                  <i class="fas fa-bell fa-fw"></i>
+                  <!-- Counter - Alerts -->
+                </a>
+                <!-- Dropdown - Alerts -->
+                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in text-dark bg-white" aria-labelledby="alertsDropdown" style="width: 350px;">
+
+                  <button onclick="ma()" class="border-0 btn btn-light btn-block menuItem text-dark bg-white">
+                    Relatórios de Manutenções</button>
+
+                  <button onclick="relatoriogeral()" class="btn btn-light  menuItem text-dark bg-white border-0">
+                    Relatórios pedidos com clientes e peças</button>
+
+
+                  <button onclick="relatoriogeralemail()" class="border-0 btn btn-light  menuItem text-dark bg-white">
+                    Relatórios pedidos com clientes e peças por email</button>
+
+
+                </div>
+              </li>
+
+
+
+
+
+              <?php if ($_SESSION['FuncionarioAdm'] == 1) { ?>
+                <div class="nav-item dropdown no-arrow float-right">
+                  <a class="nav-link dropdown-toggle text-dark bg-white" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Configurações
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in text-dark bg-white" aria-labelledby="userDropdown">
+                    <a onclick="cadastrarFuncionario()" class="dropdown-item text-dark bg-white ">
+                      <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400  text-dark bg-white"></i>
+                      Cadastrar Funcionário
+                    </a>
+
+                    <a onclick="listarFuncionarios()" class="dropdown-item text-dark bg-white ">
+                      <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400  text-dark bg-white"></i>
+                      Funcionários
+                    </a>
+
+                    <a onclick="senhaPadrao()" class="dropdown-item text-dark bg-white ">
+                      <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400  text-dark bg-white"></i>
+                      Senha padrão
+                    </a>
+
+                  </div>
+                </div>
+              <?php }; ?>
+
+
+              <!-- perfil de usuario -->
+              <div class="nav-item dropdown no-arrow float-right">
+                <a class="nav-link dropdown-toggle text-dark bg-white" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <?php echo $_SESSION['FuncionarioNome']; ?>
+                </a>
+                <!-- Dropdown - User Information -->
+                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in text-dark bg-white" aria-labelledby="userDropdown">
+                  <a class="dropdown-item text-dark bg-white ">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400  text-dark bg-white"></i>
+                    Perfil
+                  </a>
+
+                  <a class="dropdown-item text-dark bg-white " href="<? echo $url; ?>login.php">
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400 text-dark bg-white"></i>
+                    Sair
+                  </a>
+                </div>
               </div>
-            </li>
 
+              <li class="nav-item">
 
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
+                  <div class="bg-white py-2 collapse-inner rounded">
+                    <!-- <h6 class="collapse-header">Custom Components:</h6> -->
 
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle text-dark bg-white"   id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Fornecedores 
-        <i class="fas fa-bell fa-fw"></i>
-                <!-- Counter - Alerts -->
-              </a>
-              <!-- Dropdown - Alerts -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in text-dark bg-white" aria-labelledby="alertsDropdown"  style="width: 350px;" >
-                
-        <button    class="border-0 btn-block btn-light btn menuItem cadastrarFornecedor text-dark bg-white">
-Cadastrar</button>
+                  </div>
+                </div>
 
-<button   onclick="listarfornecedores()" class="border-0 btn-block btn-light btn menuItem text-dark bg-white">
-Listar</button>
+          </div>
+        </nav>
+      </div>
 
-<button   onclick="relatorioFornecedores()" class=" border-0 btn-block btn-light btn menuItem text-dark bg-white">
-Relatório de fornecedores</button>
-              </div>
-            </li>
-
-
-            
-
-
-
-
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="border-0 nav-link dropdown-toggle text-dark bg-white"  id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Relatórios 
-        <i class="fas fa-bell fa-fw"></i>
-                <!-- Counter - Alerts -->
-              </a>
-              <!-- Dropdown - Alerts -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in text-dark bg-white" aria-labelledby="alertsDropdown" style="width: 350px;">
-                
-        <button   onclick="ma()"  class="border-0 btn btn-light btn-block menuItem text-dark bg-white">
-Relatórios de Manutenções</button>
-
-<button   onclick="relatoriogeral()"  class="btn btn-light  menuItem text-dark bg-white border-0">
-Relatórios pedidos com clientes e peças</button>
-
-
-<button   onclick="relatoriogeralemail()"  class="border-0 btn btn-light  menuItem text-dark bg-white">
-Relatórios pedidos com clientes e peças por email</button>
-
-
-              </div>
-            </li>
-    
-
-
-
-
-<?php if($_SESSION['FuncionarioAdm'] == 1){ ?>
-  <div class="nav-item dropdown no-arrow float-right">
-    <a class="nav-link dropdown-toggle text-dark bg-white"  id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Configurações 
-    </a>
-    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in text-dark bg-white" aria-labelledby="userDropdown">
-      <a onclick="cadastrarFuncionario()" class="dropdown-item text-dark bg-white " >
-        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400  text-dark bg-white"></i>
-        Cadastrar Funcionário
-      </a>
-
-      <a onclick="listarFuncionarios()" class="dropdown-item text-dark bg-white " >
-        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400  text-dark bg-white"></i>
-        Funcionários
-      </a>
-
-      <a onclick="senhaPadrao()" class="dropdown-item text-dark bg-white " >
-        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400  text-dark bg-white"></i>
-        Senha padrão
-      </a>
 
     </div>
-  </div>
-<?php }; ?>
+
+    <div class="container">
+
+    </div>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
 
-<!-- perfil de usuario -->
-<div class="nav-item dropdown no-arrow float-right">
-              <a class="nav-link dropdown-toggle text-dark bg-white"  id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <?php echo $_SESSION['FuncionarioNome']; ?>
-              </a>
-              <!-- Dropdown - User Information -->
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in text-dark bg-white" aria-labelledby="userDropdown">
-                <a class="dropdown-item text-dark bg-white " >
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400  text-dark bg-white"></i>
-                  Perfil
-                </a>
-               
-                <a class="dropdown-item text-dark bg-white " href="<? echo $url; ?>login.php">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400 text-dark bg-white"></i>
-                  Sair
-                </a>
-              </div>
-</div>
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-      <li class="nav-item">
- 
-  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
-  <div class="bg-white py-2 collapse-inner rounded">
-    <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-    
-  </div>
-  </div>
-     
-  </div>
-</nav>
-  </div>
-
-
-</div>
-
-<div class="container">
-
-</div>
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-
-  <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-  <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -854,17 +937,17 @@ Relatórios pedidos com clientes e peças por email</button>
 
           <div id="espaco" class="row toAdd mt-5 pt-4">
 
-           
-             </div>     
+
+          </div>
         </div>
         <!-- /.container-fluid -->
       </div>
-    
+
 
     </div>
     <!-- End of Content Wrapper -->
 
-  </button>
+    </button>
   </div>
   <!-- End of Page Wrapper -->
 
@@ -875,7 +958,7 @@ Relatórios pedidos com clientes e peças por email</button>
 
 
 
-  
+
 
 
   <!-- Logout Modal-->
@@ -884,13 +967,13 @@ Relatórios pedidos com clientes e peças por email</button>
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button   class="close"   data-dismiss="modal" aria-label="Close">
+          <button class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
-          <button   class="btn btn-secondary"   data-dismiss="modal">Cancel</button>
+          <button class="btn btn-secondary" data-dismiss="modal">Cancel</button>
           <a class="btn btn-light" href="login.html">Logout</a>
         </div>
       </div>
@@ -901,18 +984,12 @@ Relatórios pedidos com clientes e peças por email</button>
   <!-- <button   style="position: fixed;right: 10px;bottom: 10px;width: 115px;height: 115px;border-radius: 100px;" class="im btn btn-light">Iniciar manutenção</button> -->
 
 
-<div class="popupexcluirparcela">
+  <div class="popupexcluirparcela">
 
 
-</div>
+  </div>
 
 
 </body>
+
 </html>
-
-
-
-
-
-
-

@@ -45,6 +45,8 @@ class ServiceEmpresa_Fornecedor{
 		$stmt->execute();
 		return $stmt->fetchAll(PDO::FETCH_OBJ);
 	}
+
+	
 	public function Salvar(){
 		$quary = "INSERT INTO `Empresa_Fornecedor` 
 			(`Empresa_FornecedorId`, 

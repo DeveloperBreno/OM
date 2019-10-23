@@ -54,8 +54,9 @@ class ServiceCliente_Contato{
 		$stmt->execute();
 	}
 
+
+	// validation jquery ok
 	public function Salvar(){
-	
 		$quary = "INSERT INTO `Cliente_Contato` (
 			`ClienteId`, 
 			`ClienteNumeroContato`, 

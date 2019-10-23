@@ -385,7 +385,7 @@ if ($acao == "cadastrarFuncionario") {
 	echo "<form id='cadastrarFuncionario'>";
 		divOpen('row');
 			divOpen('col-6');
-				input('FuncionarioNome', 'Nome', 'Nome', '', 'text', 'required' );
+				input('FuncionarioNome', 'Nome ', 'Nome ', '', 'text', 'required' );
 				input('FuncionarioCpf', 'CPF', 'CPF', '', 'number', 'required');
 			divClose();
 			divOpen('col-6');
@@ -444,15 +444,6 @@ if ($acao == "cadastrarFornecedor") {
 }
 
 
-if ($acao == "relatoriogeralemail") {
-
-require '../../001Mecanica/appSendEmail/bibliotecas/PHPMailer/Exception.php';
-require '../../001Mecanica/appSendEmail/bibliotecas/PHPMailer/OAuth.php';
-require '../../001Mecanica/appSendEmail/bibliotecas/PHPMailer/PHPMailer.php';
-require '../../001Mecanica/appSendEmail/bibliotecas/PHPMailer/POP3.php';
-require '../../001Mecanica/appSendEmail/bibliotecas/PHPMailer/SMTP.php';
-require '../../001Mecanica/appSendEmail/envio.php';
-}
 
 if ($acao == "relatoriogeral") {
 	
